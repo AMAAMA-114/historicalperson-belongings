@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>偉人の愛用品図鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Cinzel+Decorative:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1008;--parchment:#f5ead8;--gold:#c8963c;--gold-light:#e8b85a;--rust:#8b3a2a;--jade:#2d6b5e;--smoke:#8a7a6a;--paper:#faf3e6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Noto Serif JP',serif;}
+.page{display:none;animation:fadeIn 0.35s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* HEADER */
+header{background:var(--ink);color:var(--parchment);text-align:center;padding:36px 24px 28px;cursor:pointer;}
+.ho{color:var(--gold);font-size:11px;letter-spacing:5px;font-family:'Noto Sans JP',sans-serif;margin-bottom:12px;}
+.st{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,4vw,46px);color:var(--gold-light);text-shadow:0 0 30px rgba(200,150,60,0.3);}
+.ss{font-size:13px;color:var(--smoke);margin-top:8px;letter-spacing:3px;font-weight:300;}
+.hd{width:180px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto 0;}
+/* NAV */
+nav{background:var(--rust);padding:12px 24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+nav a{color:var(--parchment);text-decoration:none;font-size:13px;letter-spacing:2px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:color 0.2s;}
+nav a:hover{color:var(--gold-light);}
+/* LAYOUT */
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px;display:grid;grid-template-columns:1fr 255px;gap:32px;align-items:start;}
+@media(max-width:768px){.wrap{grid-template-columns:1fr;}.sidebar{display:none;}}
+/* ARTICLE CARDS */
+.card{background:white;border:1px solid #e0d5c0;box-shadow:4px 4px 0 #ddd,8px 8px 0 #ccc;margin-bottom:32px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+.card:hover{transform:translateY(-3px);box-shadow:4px 7px 0 #ccc,8px 13px 0 #bbb;}
+.ch{background:var(--ink);color:var(--parchment);padding:15px 22px;display:flex;align-items:center;gap:12px;}
+.eb{background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;padding:3px 9px;letter-spacing:1px;font-family:'Noto Sans JP',sans-serif;white-space:nowrap;}
+.cp{font-size:clamp(15px,2.5vw,20px);font-weight:700;letter-spacing:2px;}
+.cp span{color:var(--gold-light);}
+.cb{padding:20px 22px;}
+.cit{font-size:clamp(16px,2.5vw,21px);font-weight:900;color:var(--rust);border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:12px;}
+.cx{font-size:14px;line-height:1.9;color:#2a2010;font-weight:300;}
+.crm{display:inline-block;margin-top:12px;background:var(--rust);color:white;padding:7px 16px;font-size:12px;font-weight:700;font-family:'Noto Sans JP',sans-serif;letter-spacing:1px;}
+/* DETAIL */
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--rust);font-size:13px;cursor:pointer;margin-bottom:22px;font-family:'Noto Sans JP',sans-serif;font-weight:700;}
+.back:hover{color:var(--gold);}
+.dart{background:white;border:1px solid #e0d5c0;box-shadow:4px 4px 0 #e0d5c0;}
+.dh{background:var(--ink);color:var(--parchment);padding:22px 30px;}
+.de{color:var(--gold);font-size:11px;letter-spacing:3px;font-family:'Noto Sans JP',sans-serif;margin-bottom:5px;}
+.dp{font-size:clamp(18px,3vw,26px);font-weight:700;letter-spacing:2px;}
+.dp span{color:var(--gold-light);}
+.db{padding:28px 30px;}
+.dit{font-size:clamp(18px,3vw,24px);font-weight:900;color:var(--rust);border-bottom:2px solid var(--gold);padding-bottom:9px;margin-bottom:20px;}
+.dt{font-size:15px;line-height:2.1;color:#2a2010;font-weight:300;margin-bottom:16px;}
+.dt strong{color:var(--rust);font-weight:700;}
+.dt .hl{background:linear-gradient(transparent 60%,rgba(200,150,60,0.25) 60%);}
+.qb{margin:18px 0;padding:15px 18px;border-left:4px solid var(--gold);background:var(--parchment);font-style:italic;font-size:14px;color:var(--smoke);line-height:1.9;}
+/* AD BLOCKS */
+.ad{margin:24px 0;border:2px dashed var(--gold);background:linear-gradient(135deg,#fffbf0,#fff8e6);padding:18px 20px;position:relative;text-align:center;}
+.ad.cool{background:linear-gradient(135deg,#f0f4f8,#e8eef5);}
+.ad::before{content:'📢 PR・アフィリエイト広告';position:absolute;top:-10px;left:12px;background:var(--gold);color:var(--ink);font-size:10px;font-weight:700;padding:2px 10px;letter-spacing:1px;font-family:'Noto Sans JP',sans-serif;}
+.at{font-size:17px;font-weight:700;margin-bottom:5px;}
+.adesc{font-size:13px;color:#555;font-family:'Noto Sans JP',sans-serif;line-height:1.7;margin-bottom:13px;}
+.ag{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:13px;}
+@media(max-width:480px){.ag{grid-template-columns:repeat(2,1fr);}}
+.ai{background:white;border:1px solid #e0d5c0;padding:10px 7px;cursor:pointer;transition:all 0.2s;text-decoration:none;color:inherit;display:block;}
+.ai:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 12px rgba(200,150,60,0.2);}
+.ai .em{font-size:22px;display:block;margin-bottom:4px;}
+.ai .pn{font-size:11px;font-weight:700;}
+.ai .pp{font-size:12px;color:var(--rust);font-family:'Noto Sans JP',sans-serif;}
+.acta{display:inline-block;background:var(--rust);color:white;padding:10px 26px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;letter-spacing:1px;font-family:'Noto Sans JP',sans-serif;transition:background 0.2s;}
+.acta:hover{background:#a04030;}
+.acta.g{background:var(--gold);color:var(--ink);}
+.acta.g:hover{background:var(--gold-light);}
+/* TOP BANNER */
+.tbanner{background:linear-gradient(90deg,#1a1008,#2d1a0a,#1a1008);border:1px solid var(--gold);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+.tbt{color:var(--parchment);font-size:14px;}
+.tbt span{color:var(--gold-light);font-weight:700;}
+.tbsm{font-size:10px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;}
+.tbb{background:var(--gold);color:var(--ink);padding:8px 16px;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer;font-family:'Noto Sans JP',sans-serif;text-decoration:none;transition:background 0.2s;}
+.tbb:hover{background:var(--gold-light);}
+/* SIDEBAR */
+.sidebar{position:sticky;top:20px;}
+.sw{background:white;border:1px solid #e0d5c0;margin-bottom:20px;}
+.swh{background:var(--jade);color:white;padding:10px 14px;font-size:13px;font-weight:700;letter-spacing:2px;font-family:'Noto Sans JP',sans-serif;}
+.swb{padding:13px;}
+.sw ul{list-style:none;}
+.sw ul li{padding:8px 0;border-bottom:1px dotted #e0d5c0;font-size:13px;cursor:pointer;transition:color 0.2s;display:flex;align-items:center;gap:8px;}
+.sw ul li:last-child{border:none;}
+.sw ul li:hover{color:var(--rust);}
+.sw ul li .eb2{font-size:10px;background:var(--parchment);color:var(--smoke);padding:2px 5px;border:1px solid #d0c5b0;font-family:'Noto Sans JP',sans-serif;flex-shrink:0;}
+.sad{background:linear-gradient(160deg,#1a1008,#2d1a0a);color:var(--parchment);padding:17px 13px;text-align:center;border:1px solid var(--gold);margin-bottom:20px;}
+.sadl{font-size:10px;color:var(--gold);letter-spacing:2px;font-family:'Noto Sans JP',sans-serif;margin-bottom:5px;}
+.sadt{font-size:14px;font-weight:700;color:var(--gold-light);margin-bottom:7px;line-height:1.5;}
+.sadb{font-size:12px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;line-height:1.7;margin-bottom:11px;}
+.sadbtn{display:block;background:var(--gold);color:var(--ink);padding:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:background 0.2s;text-decoration:none;}
+.sadbtn:hover{background:var(--gold-light);}
+/* PRODUCT PAGE */
+.ppwrap{max-width:860px;margin:0 auto;padding:32px 20px;}
+.phero{background:var(--ink);color:var(--parchment);padding:32px 28px;margin-bottom:24px;position:relative;overflow:hidden;}
+.phl{color:var(--gold);font-size:11px;letter-spacing:3px;font-family:'Noto Sans JP',sans-serif;margin-bottom:7px;}
+.pht{font-size:clamp(20px,3.5vw,30px);font-weight:900;line-height:1.3;margin-bottom:9px;}
+.pht span{color:var(--gold-light);}
+.phs{font-size:14px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;line-height:1.7;}
+.pstory{background:white;border:1px solid #e0d5c0;padding:24px 28px;margin-bottom:22px;box-shadow:4px 4px 0 #e0d5c0;}
+.pstory h3{font-size:17px;font-weight:700;color:var(--rust);border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:14px;}
+.pstory p{font-size:14px;line-height:2;font-weight:300;}
+.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:24px;}
+.pc{background:white;border:1px solid #e0d5c0;padding:18px 14px;text-align:center;cursor:pointer;transition:all 0.25s;text-decoration:none;color:inherit;display:block;box-shadow:3px 3px 0 #e0d5c0;}
+.pc:hover{transform:translateY(-4px);box-shadow:3px 7px 0 #d0c5b0;border-color:var(--gold);}
+.pc .pce{font-size:38px;margin-bottom:9px;display:block;}
+.pc .pcn{font-size:15px;font-weight:700;margin-bottom:3px;}
+.pc .pcm{font-size:12px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;margin-bottom:7px;}
+.pc .pcp{font-size:17px;font-weight:900;color:var(--rust);margin-bottom:11px;}
+.pc .pcp span{font-size:12px;font-weight:400;}
+.pc .pcb{display:block;background:var(--rust);color:white;padding:7px 10px;font-size:13px;font-weight:700;font-family:'Noto Sans JP',sans-serif;transition:background 0.2s;}
+.pc:hover .pcb{background:#a04030;}
+.disc{font-size:11px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;line-height:1.8;background:var(--parchment);padding:13px 16px;border:1px solid #e0d5c0;}
+footer{background:var(--ink);color:var(--smoke);text-align:center;padding:26px 24px;font-size:12px;font-family:'Noto Sans JP',sans-serif;line-height:2;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header onclick="go('top')">
+  <div class="ho">✦ 歴史が教えてくれる暮らしの知恵 ✦</div>
+  <h1 class="st">偉人の愛用品図鑑</h1>
+  <p class="ss">Famous Favorites — 歴史上の人物が愛した品々</p>
+  <div class="hd"></div>
+</header>
+<nav>
+  <a onclick="go('top')">ホーム</a>
+  <a onclick="go('japan')">日本史</a>
+  <a onclick="go('world')">世界史</a>
+  <a onclick="go('other')">その他</a>
+</nav>
+
+<!-- ======= TOP ======= -->
+<div id="pg-top" class="page active">
+  <div class="wrap">
+    <main>
+      <div class="tbanner">
+        <div>
+          <div class="tbt"><span>今週のPickup：</span>曹操も悩んだ頭痛 — 石枕と現代の冷感枕</div>
+          <div class="tbsm">※本サイトはアフィリエイト広告を含みます</div>
+        </div>
+        <a class="tbb" onclick="go('caocao')">記事を読む →</a>
+      </div>
+
+      <div class="card" onclick="go('caocao')">
+        <div class="ch"><span class="eb">三国時代 / 中国</span><h2 class="cp"><span>曹操</span>（155〜220年）</h2></div>
+        <div class="cb">
+          <div class="cit">🪨 愛用品：石枕（せきちん）</div>
+          <p class="cx">三国時代の英雄・曹操は天然石の枕を愛用し、頭痛（頭風）に長年悩まされていた。現在でも廟に<strong>お供え物として鎮痛剤が置かれる</strong>という風習が残っている…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+
+      <div class="card" onclick="go('beethoven')">
+        <div class="ch"><span class="eb">古典派 / ドイツ</span><h2 class="cp"><span>ベートーヴェン</span>（1770〜1827年）</h2></div>
+        <div class="cb">
+          <div class="cit">☕ 愛用品：コーヒー（豆60粒ルール）</div>
+          <p class="cx">楽聖ベートーヴェンは毎朝コーヒー豆を<strong>必ず60粒数えて</strong>1杯を淹れた。この神聖な儀式が作曲への集中力を生み出していたとされる…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+
+      <div class="card" onclick="go('ieyasu')">
+        <div class="ch"><span class="eb">江戸時代 / 日本</span><h2 class="cp"><span>徳川家康</span>（1543〜1616年）</h2></div>
+        <div class="cb">
+          <div class="cit">🌿 愛用品：自製の薬・麦飯</div>
+          <p class="cx">75歳まで生きた家康の長寿の秘訣は<strong>自ら薬を調合し健康管理</strong>に徹したことにある。麦飯・味噌・乗馬を欠かしませんでした…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw">
+        <div class="swh">📜 偉人一覧</div>
+        <div class="swb"><ul>
+          <li onclick="go('caocao')"><span class="eb2">三国</span>曹操 — 石枕</li>
+          <li onclick="go('beethoven')"><span class="eb2">古典派</span>ベートーヴェン</li>
+          <li onclick="go('ieyasu')"><span class="eb2">江戸</span>徳川家康</li>
+          <li><span class="eb2">近代</span>ナポレオン（準備中）</li>
+        </ul></div>
+      </div>
+      <div class="sad">
+        <div class="sadl">🪨 PICKUP</div>
+        <div class="sadt">曹操の石枕を現代に<br>ひんやり枕で快眠を</div>
+        <div class="sadb">頭を冷やして深い眠り</div>
+        <a class="sadbtn" onclick="go('caocao')">記事を読む →</a>
+      </div>
+      <div class="sad" style="background:linear-gradient(160deg,#2d0a0a,#1a0808);">
+        <div class="sadl">💊 AFFILIATE</div>
+        <div class="sadt" style="color:#ffb3a0">廟のお供え物<br>「鎮痛剤」を現代に</div>
+        <div class="sadb">ロキソニン・バファリン各種</div>
+        <a class="sadbtn" style="background:var(--rust)" onclick="go('caocao')">曹操の記事へ →</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= 曹操 記事 ======= -->
+<div id="pg-caocao" class="page">
+  <div class="wrap">
+    <main>
+      <span class="back" onclick="go('top')">← 記事一覧に戻る</span>
+      <div class="dart">
+        <div class="dh">
+          <div class="de">三国時代 / 中国 ✦ 155〜220年</div>
+          <h1 class="dp"><span>曹操</span>と石枕（せきちん）</h1>
+        </div>
+        <div class="db">
+          <div class="dit">🪨 愛用品：石枕 — 頭痛との戦い</div>
+          <p class="dt">三国時代の英雄・<strong>曹操（そうそう）</strong>は、涼しい石を加工した枕を好んで使っていたと伝えられています。「石枕」は熱を持ちにくい天然石（主に大理石や玉石）でできており、特に<span class="hl">頭部を冷やすことで頭痛を和らげる効果</span>があるとされていました。</p>
+          <div class="qb">「曹操は長年、偏頭痛（頭風）に悩まされており、名医・華佗（かだ）にも診てもらっていた。石枕はその頭痛対策の一つとして愛用していたとされる。」— 歴史考証より</div>
+          <p class="dt">現代でも、<strong>曹操の廟（びょう）には参拝者が鎮痛剤をお供えする</strong>という風習が残っています。「頭痛持ちだった曹操に鎮痛剤を捧げることでご利益がある」という民間信仰が生まれたともいわれています。また石枕の発想は現代の<span class="hl">冷感ジェル枕</span>として形を変えて引き継がれています。</p>
+
+          <div class="ad">
+            <div class="at">💊 曹操も悩んだ頭痛に — 鎮痛剤を探す</div>
+            <div class="adesc">三国志の英雄も苦しんだ慢性頭痛。現代の市販薬で素早くケアしませんか？</div>
+            <div class="ag">
+              <a class="ai" href="https://www.amazon.co.jp/s?k=ロキソニンS+頭痛薬" target="_blank"><span class="em">💊</span><div class="pn">ロキソニンS</div><div class="pp">¥968〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=バファリンA" target="_blank"><span class="em">💊</span><div class="pn">バファリンA</div><div class="pp">¥638〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=イブA錠EX" target="_blank"><span class="em">💊</span><div class="pn">イブA錠EX</div><div class="pp">¥748〜</div></a>
+            </div>
+            <a class="acta" href="https://www.amazon.co.jp/s?k=鎮痛剤+頭痛" target="_blank">Amazonで探す →</a>
+          </div>
+
+          <div class="ad cool">
+            <div class="at">🪨 石枕を現代で再現 — 冷感枕</div>
+            <div class="adesc">天然石の冷たさを再現したジェル枕・冷感枕。頭を冷やして快眠＆頭痛対策に。</div>
+            <div class="ag">
+              <a class="ai" href="https://www.amazon.co.jp/s?k=冷感ジェル枕" target="_blank"><span class="em">❄️</span><div class="pn">ジェル冷感枕</div><div class="pp">¥2,480〜</div></a>
+              <a class="ai" href="https://amzn.asia/d/04r0s2vN" target="_blank"><span class="em">🪨</span><div class="pn">涼水石枕（川小石）</div><div class="pp">日本製・綿100%</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=低反発冷感枕" target="_blank"><span class="em">🌙</span><div class="pn">低反発冷感枕</div><div class="pp">¥3,200〜</div></a>
+            </div>
+            <a class="acta g" href="https://www.amazon.co.jp/s?k=冷感枕+ひんやり" target="_blank">Amazonで探す →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 他の偉人</div><div class="swb"><ul>
+        <li onclick="go('beethoven')"><span class="eb2">古典派</span>ベートーヴェン</li>
+        <li onclick="go('ieyasu')"><span class="eb2">江戸</span>徳川家康</li>
+      </ul></div></div>
+      <div class="sad">
+        <div class="sadl">💊 PR</div>
+        <div class="sadt">頭痛に！市販薬<br>Amazonで最安値</div>
+        <div class="sadb">ロキソニン・バファリン</div>
+        <a class="sadbtn" href="https://www.amazon.co.jp/s?k=鎮痛剤+頭痛" target="_blank">Amazonで見る →</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= ベートーヴェン 記事 ======= -->
+<div id="pg-beethoven" class="page">
+  <div class="wrap">
+    <main>
+      <span class="back" onclick="go('top')">← 記事一覧に戻る</span>
+      <div class="dart">
+        <div class="dh">
+          <div class="de">古典派 / ドイツ ✦ 1770〜1827年</div>
+          <h1 class="dp"><span>ベートーヴェン</span>とコーヒー</h1>
+        </div>
+        <div class="db">
+          <div class="dit">☕ 愛用品：コーヒー（豆60粒の儀式）</div>
+          <p class="dt">楽聖・<strong>ベートーヴェン</strong>はコーヒー愛好家として有名で、<span class="hl">毎朝必ずコーヒー豆を60粒数えて1杯を淹れる</span>という独特のこだわりを持っていました。この習慣は作曲への集中力を高め、インスピレーションを呼び起こすための朝の儀式でした。</p>
+          <div class="qb">「ベートーヴェンにとってコーヒーは神聖な儀式であり、豆の数にこだわることで毎朝の精神を整えていた。」— 伝記研究より</div>
+          <p class="dt">豆の数が<strong>60粒</strong>というのは現代のエスプレッソ換算でも適量に近く、彼の直感的なこだわりが科学的にも理にかなっていたとも言えます。コーヒーのカフェインは集中力・覚醒作用があり、<span class="hl">創作活動との相性は抜群</span>です。</p>
+
+          <div class="ad">
+            <div class="at">☕ ベートーヴェンも愛したコーヒーを再現</div>
+            <div class="adesc">豆にこだわるなら高品質なスペシャルティコーヒーを。楽聖と同じ一杯をあなたの朝に。</div>
+            <div class="ag">
+              <a class="ai" href="https://www.amazon.co.jp/s?k=スペシャルティコーヒー豆" target="_blank"><span class="em">☕</span><div class="pn">エチオピア産豆</div><div class="pp">¥1,480〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=コーヒーミル手動" target="_blank"><span class="em">🫘</span><div class="pn">手挽きミル</div><div class="pp">¥3,980〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=コーヒードリッパーセット" target="_blank"><span class="em">⚗️</span><div class="pn">ドリッパーセット</div><div class="pp">¥2,200〜</div></a>
+            </div>
+            <a class="acta" href="https://www.amazon.co.jp/s?k=スペシャルティコーヒー" target="_blank">Amazonで探す →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 他の偉人</div><div class="swb"><ul>
+        <li onclick="go('caocao')"><span class="eb2">三国</span>曹操 — 石枕</li>
+        <li onclick="go('ieyasu')"><span class="eb2">江戸</span>徳川家康</li>
+      </ul></div></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= 家康 記事 ======= -->
+<div id="pg-ieyasu" class="page">
+  <div class="wrap">
+    <main>
+      <span class="back" onclick="go('top')">← 記事一覧に戻る</span>
+      <div class="dart">
+        <div class="dh">
+          <div class="de">江戸時代 / 日本 ✦ 1543〜1616年</div>
+          <h1 class="dp"><span>徳川家康</span>と自製の薬</h1>
+        </div>
+        <div class="db">
+          <div class="dit">🌿 愛用品：自製薬・麦飯・健康習慣</div>
+          <p class="dt">江戸幕府を開いた<strong>徳川家康</strong>は、75歳という当時としては異例の長寿を全うしました。その秘訣は<span class="hl">自ら薬を調合し、健康管理に異常なほどこだわっていた</span>ことにあります。麦飯・鯛・麦味噌など質素な食事を好み、乗馬で毎日運動を欠かしませんでした。</p>
+          <div class="qb">「家康は鷹狩りと乗馬を毎日の日課とし、食は質素に、薬草の研究を生涯続けた。健康への執着が、乱世を生き延びた最大の武器だった。」</div>
+          <p class="dt">家康が愛用した薬草・漢方の考え方は現代の<strong>サプリメント・健康食品</strong>に通じるものがあります。毎日の習慣として取り入れることで、<span class="hl">現代版・家康の健康法</span>を実践できます。</p>
+
+          <div class="ad">
+            <div class="at">🌿 家康の長寿に学ぶ — 現代版健康グッズ</div>
+            <div class="adesc">乱世を生き抜いた家康のように、毎日の健康管理を習慣にしよう。</div>
+            <div class="ag">
+              <a class="ai" href="https://www.amazon.co.jp/s?k=マルチビタミン+サプリ" target="_blank"><span class="em">💚</span><div class="pn">マルチビタミン</div><div class="pp">¥1,280〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=フィッシュオイル+サプリ" target="_blank"><span class="em">🫚</span><div class="pn">フィッシュオイル</div><div class="pp">¥1,980〜</div></a>
+              <a class="ai" href="https://www.amazon.co.jp/s?k=発芽玄米" target="_blank"><span class="em">🌾</span><div class="pn">発芽玄米</div><div class="pp">¥890〜</div></a>
+            </div>
+            <a class="acta" href="https://www.amazon.co.jp/s?k=健康食品+サプリ" target="_blank">Amazonで探す →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 他の偉人</div><div class="swb"><ul>
+        <li onclick="go('caocao')"><span class="eb2">三国</span>曹操 — 石枕</li>
+        <li onclick="go('beethoven')"><span class="eb2">古典派</span>ベートーヴェン</li>
+      </ul></div></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= 日本史カテゴリ ======= -->
+<div id="pg-japan" class="page">
+  <div class="wrap">
+    <main>
+      <div class="tbanner">
+        <div><div class="tbt">🗾 <span>日本史</span> — 日本の偉人たちの愛用品</div></div>
+      </div>
+      <div class="card" onclick="go('ieyasu')">
+        <div class="ch"><span class="eb">江戸時代 / 日本</span><h2 class="cp"><span>徳川家康</span>（1543〜1616年）</h2></div>
+        <div class="cb">
+          <div class="cit">🌿 愛用品：自製の薬・麦飯</div>
+          <p class="cx">75歳まで生きた家康の長寿の秘訣は<strong>自ら薬を調合し健康管理</strong>に徹したことにある。麦飯・味噌・乗馬を欠かしませんでした…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+      <div class="card" style="opacity:0.5;cursor:default;">
+        <div class="ch"><span class="eb">戦国時代 / 日本</span><h2 class="cp"><span>織田信長</span></h2></div>
+        <div class="cb"><div class="cit">⚔️ 愛用品：南蛮渡来の品（準備中）</div><p class="cx">記事準備中...</p></div>
+      </div>
+      <div class="card" style="opacity:0.5;cursor:default;">
+        <div class="ch"><span class="eb">幕末 / 日本</span><h2 class="cp"><span>坂本龍馬</span></h2></div>
+        <div class="cb"><div class="cit">👢 愛用品：ブーツ（準備中）</div><p class="cx">記事準備中...</p></div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 カテゴリ</div><div class="swb"><ul>
+        <li onclick="go('japan')"><span class="eb2">🗾</span>日本史</li>
+        <li onclick="go('world')"><span class="eb2">🌍</span>世界史</li>
+        <li onclick="go('other')"><span class="eb2">✨</span>その他</li>
+      </ul></div></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= 世界史カテゴリ ======= -->
+<div id="pg-world" class="page">
+  <div class="wrap">
+    <main>
+      <div class="tbanner">
+        <div><div class="tbt">🌍 <span>世界史</span> — 世界の偉人たちの愛用品</div></div>
+      </div>
+      <div class="card" onclick="go('caocao')">
+        <div class="ch"><span class="eb">三国時代 / 中国</span><h2 class="cp"><span>曹操</span>（155〜220年）</h2></div>
+        <div class="cb">
+          <div class="cit">🪨 愛用品：石枕（せきちん）</div>
+          <p class="cx">三国時代の英雄・曹操は天然石の枕を愛用し、頭痛（頭風）に長年悩まされていた。現在でも廟に<strong>お供え物として鎮痛剤が置かれる</strong>という風習が残っている…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+      <div class="card" onclick="go('beethoven')">
+        <div class="ch"><span class="eb">古典派 / ドイツ</span><h2 class="cp"><span>ベートーヴェン</span>（1770〜1827年）</h2></div>
+        <div class="cb">
+          <div class="cit">☕ 愛用品：コーヒー（豆60粒ルール）</div>
+          <p class="cx">楽聖ベートーヴェンは毎朝コーヒー豆を<strong>必ず60粒数えて</strong>1杯を淹れた。この神聖な儀式が作曲への集中力を生み出していたとされる…</p>
+          <span class="crm">続きを読む →</span>
+        </div>
+      </div>
+      <div class="card" style="opacity:0.5;cursor:default;">
+        <div class="ch"><span class="eb">近代 / フランス</span><h2 class="cp"><span>ナポレオン</span></h2></div>
+        <div class="cb"><div class="cit">🛁 愛用品：ホットバス（準備中）</div><p class="cx">記事準備中...</p></div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 カテゴリ</div><div class="swb"><ul>
+        <li onclick="go('japan')"><span class="eb2">🗾</span>日本史</li>
+        <li onclick="go('world')"><span class="eb2">🌍</span>世界史</li>
+        <li onclick="go('other')"><span class="eb2">✨</span>その他</li>
+      </ul></div></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= その他カテゴリ ======= -->
+<div id="pg-other" class="page">
+  <div class="wrap">
+    <main>
+      <div class="tbanner">
+        <div><div class="tbt">✨ <span>その他</span> — 時代・地域を超えた愛用品</div></div>
+      </div>
+      <div class="card" style="opacity:0.5;cursor:default;">
+        <div class="ch"><span class="eb">古代 / エジプト</span><h2 class="cp"><span>クレオパトラ</span></h2></div>
+        <div class="cb"><div class="cit">🥛 愛用品：ロバのミルク風呂（準備中）</div><p class="cx">記事準備中...</p></div>
+      </div>
+      <div class="card" style="opacity:0.5;cursor:default;">
+        <div class="ch"><span class="eb">近現代 / 米国</span><h2 class="cp"><span>スティーブ・ジョブズ</span></h2></div>
+        <div class="cb"><div class="cit">👕 愛用品：黒タートルネック（準備中）</div><p class="cx">記事準備中...</p></div>
+      </div>
+      <div style="background:white;border:1px solid #e0d5c0;padding:24px;text-align:center;margin-top:8px;">
+        <p style="font-size:14px;color:var(--smoke);font-family:'Noto Sans JP',sans-serif;line-height:2">
+          「その他」カテゴリの記事を順次追加予定です。<br>
+          リクエストがあればお気軽にお問い合わせください。
+        </p>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sw"><div class="swh">📜 カテゴリ</div><div class="swb"><ul>
+        <li onclick="go('japan')"><span class="eb2">🗾</span>日本史</li>
+        <li onclick="go('world')"><span class="eb2">🌍</span>世界史</li>
+        <li onclick="go('other')"><span class="eb2">✨</span>その他</li>
+      </ul></div></div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 偉人の愛用品図鑑 — Famous Favorites</p>
+  <p style="margin-top:7px"><a href="#">プライバシーポリシー</a> | <a href="#">免責事項</a> | <a href="#">アフィリエイト開示</a></p>
+  <p style="margin-top:10px;font-size:11px;color:#4a3a2a">※本サイトはアフィリエイトプログラムに参加しており、掲載リンクから購入された場合、当サイトが報酬を受け取ることがあります。</p>
+</footer>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  var t = document.getElementById('pg-' + id);
+  if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+</script>
+</body>
+</html>
+
