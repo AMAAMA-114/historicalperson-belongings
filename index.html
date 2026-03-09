@@ -535,4 +535,26 @@ function go(id, pushState) {
   if (t) {
     t.classList.add('active');
     window.scrollTo({top:0, behavior:'smooth'});
-    if (pus
+    if (pushState !== false) {
+      history.pushState({page: id}, '', '#' + id);
+    }
+  }
+}
+
+// ブラウザの戻る/進むボタン・スワイプ対応
+window.addEventListener('popstate', function(e) {
+  var id = (e.state && e.state.page) ? e.state.page : 'top';
+  go(id, false);
+});
+
+// 初期表示時のURLハッシュ対応
+(function() {
+  var hash = location.hash.replace('#', '');
+  var initial = (hash && document.getElementById('pg-' + hash)) ? hash : 'top';
+  history.replaceState({page: initial}, '', initial === 'top' ? location.pathname : '#' + initial);
+  go(initial, false);
+})();
+</script>
+</body>
+</html>
+
