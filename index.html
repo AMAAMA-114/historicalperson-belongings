@@ -529,12 +529,10 @@ footer a{color:var(--gold);text-decoration:none;}
 </footer>
 
 <script>
-function go(id) {
+function go(id, pushState) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   var t = document.getElementById('pg-' + id);
-  if (t) { t.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-}
-</script>
-</body>
-</html>
-
+  if (t) {
+    t.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    if (pus
